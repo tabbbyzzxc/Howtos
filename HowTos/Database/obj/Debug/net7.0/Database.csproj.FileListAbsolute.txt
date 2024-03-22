@@ -1,0 +1,15 @@
+C:\Users\user\source\repos\Howtos\HowTos\Database\bin\Debug\net7.0\Database.deps.json
+C:\Users\user\source\repos\Howtos\HowTos\Database\bin\Debug\net7.0\Database.dll
+C:\Users\user\source\repos\Howtos\HowTos\Database\bin\Debug\net7.0\Database.pdb
+C:\Users\user\source\repos\Howtos\HowTos\Database\bin\Debug\net7.0\BusinessEntities.dll
+C:\Users\user\source\repos\Howtos\HowTos\Database\bin\Debug\net7.0\BusinessEntities.pdb
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.AssemblyInfo.cs
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.csproj.CopyComplete
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.dll
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\refint\Database.dll
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\Database.pdb
+C:\Users\user\source\repos\Howtos\HowTos\Database\obj\Debug\net7.0\ref\Database.dll

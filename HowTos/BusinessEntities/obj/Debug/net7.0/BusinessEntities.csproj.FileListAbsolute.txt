@@ -1,0 +1,11 @@
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\bin\Debug\net7.0\BusinessEntities.deps.json
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\bin\Debug\net7.0\BusinessEntities.dll
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\bin\Debug\net7.0\BusinessEntities.pdb
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\BusinessEntities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\BusinessEntities.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\BusinessEntities.AssemblyInfo.cs
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\BusinessEntities.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\BusinessEntities.dll
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\refint\BusinessEntities.dll
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\BusinessEntities.pdb
+C:\Users\user\source\repos\Howtos\HowTos\BusinessEntities\obj\Debug\net7.0\ref\BusinessEntities.dll
