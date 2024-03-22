@@ -59,7 +59,7 @@ const NavBar:FC = () => {
 
     return(
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} sx={{backdropFilter:"blur(20px)"}}>
+        <AppBar position="fixed" style={{ background: 'transparent', boxShadow: 'none'}} sx={{backdropFilter:"blur(20px)"}}>
             <Toolbar>
                 <IconButton
                     size="large"

@@ -7,30 +7,37 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import AddSharpIcon from "@mui/icons-material/AddSharp";
-import { CreateHowTo } from "../HowTo/Models";
-import { Post } from "../Axios/Axios";
-import { PostHowTo } from "../HowTo/Service";
-import { useMutation } from "@tanstack/react-query";
+import { CreateHowTo, EditHowTo, HowTo } from "../HowTo/Models";
 import { useHowToContext } from "../Context/HowToContext";
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import { Dispatch, FC, SetStateAction, useState } from "react";
 
-export default function FormDialog() {
-    const [open, setOpen] = React.useState(false);
+interface formProps{
+    howTo?: HowTo;
+    onEditClose?: Dispatch<SetStateAction<boolean>>;
+}
 
+const FormDialog:FC<formProps> = ({howTo, onEditClose }) => {
+    const [open, setOpen] = useState(!!howTo);
+    const [selected, setSelected] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
 
     const handleClose = () => {
+        if (onEditClose) {
+            onEditClose(false);
+        }
         setOpen(false);
     };
 
-    const postFunction = useHowToContext();
+    const {postFunction, putFunction, deleteFunction} = useHowToContext();
 
     return (
         <>
-            <Button variant="outlined" startIcon={<AddSharpIcon />} onClick={handleClickOpen}>
+            {!howTo && <Button variant="outlined" startIcon={<AddSharpIcon/>} onClick={handleClickOpen}>
                 Create
-            </Button>
+            </Button>}
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -45,19 +52,30 @@ export default function FormDialog() {
                         event.preventDefault();
                         const formData = new FormData(event.currentTarget);
                         const d = new Date();
-                        const createHowTo: CreateHowTo = {
-                            title: formData.get('title') as string,
-                            description: formData.get('description') as string,
-                            rawDate:{
-                                year: d.getFullYear(),
-                                month: d.getMonth() + 1,
-                                day: d.getDate(),
-                                hours: d.getHours(),
-                                minutes: d.getMinutes()
-                            },
-                            favorite: false,
-                        };
-                        postFunction.mutate(createHowTo);
+                        if(howTo){
+                            const editHowTo: EditHowTo = {
+                                id: howTo.id,
+                                title: formData.get('title') as string,
+                                description: formData.get('description') as string,
+                                favorite: howTo.favorite,
+                            };
+                            putFunction.mutate(editHowTo);
+                        }
+                        else {
+                            const createHowTo: CreateHowTo = {
+                                title: formData.get('title') as string,
+                                description: formData.get('description') as string,
+                                rawDate: {
+                                    year: d.getFullYear(),
+                                    month: d.getMonth() + 1,
+                                    day: d.getDate(),
+                                    hours: d.getHours(),
+                                    minutes: d.getMinutes()
+                                },
+                                favorite: false,
+                            };
+                            postFunction.mutate(createHowTo);
+                        }
                         handleClose();
                     },
                 }}
@@ -78,22 +96,26 @@ export default function FormDialog() {
                         type="text"
                         fullWidth
                         variant="standard"
+                        defaultValue={howTo ? howTo.title : ''}
                     />
                     <TextField
                         id="standard-multiline-flexible"
-                        label="Description"
+                        label="Short description"
                         name="description"
                         multiline
                         maxRows={4}
                         fullWidth
                         variant="standard"
+                        defaultValue={howTo ? howTo.description : ''}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit">Create</Button>
+                    <Button type="submit">{howTo ? <><EditOutlinedIcon/> Update</> : <><AddSharpIcon/>Create</>}</Button>
                 </DialogActions>
             </Dialog>
         </>
     );
 }
+
+export default FormDialog;

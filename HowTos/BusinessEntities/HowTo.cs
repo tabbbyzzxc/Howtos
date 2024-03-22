@@ -10,6 +10,6 @@
 
         public DateTime Date { get; set; }
 
-        public bool isFavorite { get; set; }
+        public bool Favorite { get; set; }
     }
 }

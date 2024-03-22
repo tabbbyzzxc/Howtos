@@ -1,8 +1,9 @@
 
-import { createContext, FC, useContext } from "react";
-import { CreateHowTo } from "../HowTo/Models";
+import { createContext, FC, useContext, useState } from "react";
+import { CreateHowTo, EditHowTo } from "../HowTo/Models";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { PostHowTo } from "../HowTo/Service";
+import { DeleteHowTo, PostHowTo, UpdateHowTo } from "../HowTo/Service";
+import { Update } from "@mui/icons-material";
 
 interface ContextType {
     postFunction: (howto: CreateHowTo) => void;
@@ -23,7 +24,6 @@ interface HowToProviderProps {
 
 export const ContextProvider:FC<HowToProviderProps> = ({ children }) => {
     const queryClient = useQueryClient();
-
     const postFunction = useMutation({
         mutationFn: (data: CreateHowTo) => PostHowTo(data),
         onSuccess: () => {
@@ -31,8 +31,22 @@ export const ContextProvider:FC<HowToProviderProps> = ({ children }) => {
         },
     })
 
+    const putFunction = useMutation({
+        mutationFn: (data: EditHowTo) => UpdateHowTo(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['howtos'] });
+        }
+    })
+
+    const deleteFunction = useMutation({
+        mutationFn: (data: number) => DeleteHowTo(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['howtos'] });
+        }
+    })
+
     return (
-        <HowToContext.Provider value={postFunction}>
+        <HowToContext.Provider value={{postFunction, putFunction, deleteFunction}}>
             {children}
         </HowToContext.Provider>
     );

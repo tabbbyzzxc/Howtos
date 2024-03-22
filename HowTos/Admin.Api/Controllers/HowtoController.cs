@@ -24,7 +24,7 @@ namespace Admin.Api.Controllers
         [HttpGet("get-howtos")]
         public async Task<List<HowToDto>> GetHowToList()
         {
-            var howtos = dbContext.HowTos.ToList();
+            var howtos = dbContext.HowTos.ToList().OrderBy(x => x.Id);
             var howtosDto = mapper.Map<List<HowToDto>>(howtos);
             return howtosDto;
         }
@@ -37,5 +37,21 @@ namespace Admin.Api.Controllers
             dbContext.SaveChanges();
         }
 
+        [HttpPut("update-howto")]
+        public async Task UpdateHowTo([Required, FromBody] UpdateHowToDto request)
+        {
+            var howTo = dbContext.HowTos.Find(request.Id);
+            mapper.Map(request, howTo);
+            dbContext.HowTos.Update(howTo);
+            dbContext.SaveChanges();
+        }
+
+        [HttpDelete("delete-howto/{id:long}")]
+        public async Task DeleteHowTo([Required, FromRoute] long id)
+        {
+            var howto = dbContext.HowTos.First(x => x.Id == id);
+            dbContext.HowTos.Remove(howto);
+            dbContext.SaveChanges();
+        }
     }
 }

@@ -11,10 +11,6 @@ import { Get } from "../Axios/Axios";
 import { HowTo } from "./Models";
 import { GetHowTos } from "./Service";
 
-function getsmthing(){
-    return;
-}
-
 const HowToPage:FC = () => {
     const {data: howtos, status: howtoStatus, isFetching} = useQuery<HowTo[]>(
         {
@@ -43,7 +39,7 @@ const HowToPage:FC = () => {
 
 
     return(
-        <Container maxWidth={"xl"}>
+        <Container maxWidth={"xl"} sx={{marginTop: '70px'}}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
                 {
                     howtos!.map((item, index) => (

@@ -6,6 +6,13 @@ export interface HowTo{
     favorite: boolean;
 }
 
+export interface EditHowTo{
+    id: number;
+    title: string;
+    description: string;
+    favorite: boolean;
+}
+
 export interface CreateHowTo{
     title: string;
     description: string;
